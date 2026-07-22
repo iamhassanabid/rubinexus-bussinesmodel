@@ -80,7 +80,6 @@
      OPTIMIZED COMPACT PRINT ENGINE (ZERO BLANK PAGES & FIXED COLORS)
      ========================================================================== */
   @media print {
-    /* Color preserve force */
     * {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
@@ -100,7 +99,6 @@
       page-break-after: avoid !important;
     }
 
-    /* Force all panels to display continuously without blank gaps */
     section.panel {
       display: block !important;
       visibility: visible !important;
@@ -108,16 +106,14 @@
       padding: 20px 5vw !important;
       max-width: 100% !important;
       margin: 0 auto !important;
-      page-break-after: auto !important; /* Continuous natural flow */
+      page-break-after: auto !important;
       border-bottom: 1px dashed #ccc !important;
     }
 
-    /* Prevent headings or cards breaking awkwardly in half */
     h2.title, h3.h3, .card, .flagcard, .quote, .note, table.rt tr {
       page-break-inside: avoid !important;
     }
 
-    /* Force table & card colors in PDF */
     table.rt th {
       background-color: var(--navy) !important;
       color: #ffffff !important;
@@ -136,6 +132,17 @@
 </style>
 </head>
 <body>
+
+<!-- PASSWORD LOCK SCREEN BOX -->
+<div id="auth-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#0F1B34; z-index:9999; display:flex; align-items:center; justify-content:center; font-family:sans-serif;">
+  <div style="background:#fff; padding:35px; border-radius:8px; text-align:center; max-width:380px; width:90%; box-shadow:0 10px 25px rgba(0,0,0,0.3);">
+    <h2 style="color:#0F1B34; margin-top:0;">Rubi Nexus Group</h2>
+    <p style="color:#666; font-size:13px;">This document is private. Enter passcode to view.</p>
+    <input type="password" id="pass-input" placeholder="Enter Password" style="width:100%; padding:12px; margin:15px 0; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font-size:16px; text-align:center;">
+    <button onclick="checkPass()" style="background:#C9A24B; color:#000; border:none; padding:12px 20px; font-weight:bold; border-radius:4px; cursor:pointer; width:100%; font-size:15px;">Unlock Document</button>
+    <p id="pass-err" style="color:red; font-size:12px; margin-top:10px; display:none;">Incorrect Password!</p>
+  </div>
+</div>
 
 <header class="hero">
   <div class="eyebrow util">Master Business Model — Full Detail Edition</div>
@@ -630,6 +637,7 @@
   <div class="quote">"Every dollar in this sheet is either a one-time setup cost or a cost tied to a specific phase — nothing here should be spent before its phase starts."</div>
 </section>
 
+<!-- TAB SWITCHING SCRIPT -->
 <script>
   document.querySelectorAll('nav.tabs button').forEach(btn=>{
     btn.addEventListener('click', ()=>{
@@ -641,9 +649,9 @@
     });
   });
 </script>
+
 <!-- PASSWORD CHECK SCRIPT -->
 <script>
-  // APNA PASSWORD YAHAN SET KAREIN:
   const DOCUMENT_PASSWORD = "nexus1821"; 
 
   function checkPass() {
@@ -655,15 +663,6 @@
     }
   }
 </script>
-  <!-- PASSWORD LOCK SCREEN BOX -->
-<div id="auth-overlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#0F1B34; z-index:9999; display:flex; align-items:center; justify-content:center; font-family:sans-serif;">
-  <div style="background:#fff; padding:35px; border-radius:8px; text-align:center; max-width:380px; width:90%; box-shadow:0 10px 25px rgba(0,0,0,0.3);">
-    <h2 style="color:#0F1B34; margin-top:0;">Rubi Nexus Group</h2>
-    <p style="color:#666; font-size:13px;">This document is private. Enter passcode to view.</p>
-    <input type="password" id="pass-input" placeholder="Enter Password" style="width:100%; padding:12px; margin:15px 0; border:1px solid #ccc; border-radius:4px; box-sizing:border-box; font-size:16px; text-align:center;">
-    <button onclick="checkPass()" style="background:#C9A24B; color:#000; border:none; padding:12px 20px; font-weight:bold; border-radius:4px; cursor:pointer; width:100%; font-size:15px;">Unlock Document</button>
-    <p id="pass-err" style="color:red; font-size:12px; margin-top:10px; display:none;">Incorrect Password!</p>
-  </div>
-</div>
-  </body>
+
+</body>
 </html>

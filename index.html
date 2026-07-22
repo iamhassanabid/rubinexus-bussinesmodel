@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rubinexus — Master Business Model (Full Detail)</title>
+<style>
+  :root{
+    --navy:#0F1B34; --navy2:#182849; --gold:#C9A24B; --gold-soft:#E9D6A3;
+    --paper:#F6F3EC; --ink:#1B2434; --muted:#6b7280; --line:#2A3A5C;
+    --red:#B3532B; --green:#2E7D5B;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Georgia',serif; -webkit-font-smoothing:antialiased;}
+  .util{font-family:'Helvetica Neue',Arial,sans-serif;}
+  header.hero{background:radial-gradient(ellipse at top left, var(--navy2), var(--navy) 70%); color:#fff; padding:52px 8vw 42px; position:relative; overflow:hidden;}
+  header.hero::after{content:""; position:absolute; right:-10%; top:-30%; width:60%; height:160%; background:conic-gradient(from 200deg, var(--gold-soft), transparent 40%); opacity:.08;}
+  .eyebrow{font-family:'Helvetica Neue',Arial,sans-serif; letter-spacing:.2em; text-transform:uppercase; font-size:11.5px; color:var(--gold-soft); margin-bottom:10px;}
+  h1.brand{font-size:clamp(28px,4.6vw,48px); margin:0 0 6px; font-weight:400;}
+  h1.brand em{font-style:normal; color:var(--gold);}
+  .tag{font-size:15px; color:#c9d2e6; max-width:720px; line-height:1.6; margin-top:8px;}
+
+  nav.tabs{position:sticky; top:0; z-index:50; background:var(--navy); display:flex; overflow-x:auto; border-bottom:1px solid var(--line); font-family:'Helvetica Neue',Arial,sans-serif;}
+  nav.tabs button{background:none; border:none; color:#9aa7c2; padding:13px 13px; font-size:11.3px; letter-spacing:.01em; cursor:pointer; white-space:nowrap; border-bottom:2px solid transparent;}
+  nav.tabs button.active{color:#fff; border-bottom-color:var(--gold);}
+  nav.tabs button.warn.active{border-bottom-color:var(--red);}
+  nav.tabs button:hover{color:#fff;}
+
+  section.panel{display:none; padding:44px 8vw 66px; max-width:1160px; margin:0 auto;}
+  section.panel.active{display:block;}
+  h2.title{font-size:clamp(23px,2.8vw,30px); font-weight:400; margin:0 0 8px; color:var(--navy);}
+  .sub{font-family:'Helvetica Neue',Arial,sans-serif; color:var(--muted); font-size:13.5px; max-width:760px; margin-bottom:26px; line-height:1.6;}
+  h3.h3{font-family:'Helvetica Neue',Arial,sans-serif; font-size:16px; font-weight:600; color:var(--navy); margin:24px 0 9px;}
+  h4.h4{font-family:'Helvetica Neue',Arial,sans-serif; font-size:14.5px; font-weight:600; color:var(--navy2); margin:16px 0 6px;}
+  p.body, li{font-family:'Helvetica Neue',Arial,sans-serif; font-size:13.5px; line-height:1.75; color:#333;}
+  ul{padding-left:19px; margin-top:6px;}
+
+  .split2{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:12px;}
+  @media(max-width:760px){.split2{grid-template-columns:1fr;}}
+  .card{border:1px solid #e3ddcd; background:#fff; border-radius:6px; padding:18px 20px;}
+  .card h4{margin:0 0 8px; font-size:15px; color:var(--navy); font-family:'Helvetica Neue',Arial,sans-serif; font-weight:600;}
+  .badge{display:inline-block; font-family:'Helvetica Neue',Arial,sans-serif; font-size:10px; letter-spacing:.05em; text-transform:uppercase; background:var(--gold-soft); color:#5c4a1a; padding:3px 9px; border-radius:20px; margin-bottom:8px;}
+  .badge.opt{background:#e4f3ec; color:var(--green);}
+  .badge.red{background:#fbe2d6; color:var(--red);}
+
+  .flagcard{border:1px solid #e7c9b8; background:#fdf3ee; border-radius:6px; padding:16px 18px; margin:12px 0;}
+  .flagcard h4{margin:0 0 6px; color:var(--red); font-family:'Helvetica Neue',Arial,sans-serif; font-size:14.5px;}
+  .flagcard p{margin:0;}
+
+  table.rt{width:100%; border-collapse:collapse; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12.8px; margin:12px 0 18px;}
+  table.rt th{background:var(--navy); color:#fff; text-align:left; padding:8px 11px; font-weight:600;}
+  table.rt td{padding:8px 11px; border-bottom:1px solid #e6e0d0; vertical-align:top;}
+  table.rt tr:nth-child(even) td{background:#faf7ef;}
+
+  .steps{margin-top:12px;}
+  .step{display:flex; gap:15px; padding:14px 0; border-bottom:1px solid #e6e0d0;}
+  .step:last-child{border-bottom:none;}
+  .stepnum{font-family:'Helvetica Neue',Arial,sans-serif; font-weight:700; color:var(--gold); font-size:18px; min-width:34px;}
+  .stepbody h4{margin:0 0 3px; font-size:14.5px; color:var(--navy); font-family:'Helvetica Neue',Arial,sans-serif; font-weight:600;}
+  .stepbody p{margin:0;}
+
+  .quote{font-family:'Helvetica Neue',Arial,sans-serif; font-size:13.5px; font-style:italic; color:var(--navy); border-left:3px solid var(--gold); padding:11px 16px; margin:14px 0; background:#fff;}
+  .note{font-family:'Helvetica Neue',Arial,sans-serif; background:#fff8e8; border-left:3px solid var(--gold); padding:9px 13px; font-size:12.5px; color:#5c4a1a; margin:9px 0 16px; line-height:1.6;}
+  .srcnote{font-family:'Helvetica Neue',Arial,sans-serif; font-size:11.5px; color:var(--muted); font-style:italic;}
+
+  .kpi-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:14px;}
+  @media(max-width:800px){.kpi-grid{grid-template-columns:1fr 1fr;}}
+  .kpi{background:var(--navy); color:#fff; border-radius:6px; padding:14px; font-family:'Helvetica Neue',Arial,sans-serif;}
+  .kpi .n{color:var(--gold); font-size:19px; font-weight:700;}
+  .kpi .l{font-size:10.5px; color:#aeb8cf; margin-top:3px;}
+
+  .pdfrow{display:flex; gap:12px; margin-top:12px; flex-wrap:wrap;}
+  .pdflink{display:flex; align-items:center; gap:8px; font-family:'Helvetica Neue',Arial,sans-serif; font-size:12.5px; background:#fff; border:1px solid #e3ddcd; border-radius:6px; padding:9px 13px; text-decoration:none; color:var(--ink);}
+  .pdflink .ic{width:22px;height:22px;border-radius:4px;background:#c0392b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:700;}
+  .pdflink:hover{border-color:var(--gold);}
+
+  .expense-total{font-family:'Helvetica Neue',Arial,sans-serif; background:var(--navy); color:#fff; border-radius:8px; padding:18px 22px; margin-top:10px;}
+  .expense-total .n{color:var(--gold); font-size:26px; font-weight:700;}
+
+  /* ==========================================================================
+     OPTIMIZED COMPACT PRINT ENGINE (ZERO BLANK PAGES & FIXED COLORS)
+     ========================================================================== */
+  @media print {
+    /* Color preserve force */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      background: var(--paper) !important;
+      color: var(--ink) !important;
+    }
+
+    nav.tabs { display: none !important; }
+
+    header.hero {
+      padding: 30px 5vw !important;
+      background: radial-gradient(ellipse at top left, var(--navy2), var(--navy) 70%) !important;
+      color: #fff !important;
+      page-break-after: avoid !important;
+    }
+
+    /* Force all panels to display continuously without blank gaps */
+    section.panel {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      padding: 20px 5vw !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      page-break-after: auto !important; /* Continuous natural flow */
+      border-bottom: 1px dashed #ccc !important;
+    }
+
+    /* Prevent headings or cards breaking awkwardly in half */
+    h2.title, h3.h3, .card, .flagcard, .quote, .note, table.rt tr {
+      page-break-inside: avoid !important;
+    }
+
+    /* Force table & card colors in PDF */
+    table.rt th {
+      background-color: var(--navy) !important;
+      color: #ffffff !important;
+    }
+
+    .kpi {
+      background-color: var(--navy) !important;
+      color: #ffffff !important;
+    }
+
+    .expense-total {
+      background-color: var(--navy) !important;
+      color: #ffffff !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow util">Master Business Model — Full Detail Edition</div>
+  <h1 class="brand">Rubi Nexus Group <span style="font-size:.55em; color:#c9d2e6;">→</span> <em>The Freight Nexus</em></h1>
+  <div class="tag">The complete plan, tab by tab: introduction, problems, solutions, opportunity, business model options with 5-year outlooks, monetization, tech/API strategy, market entry by country, growth, driver engagement, enterprise clients, risk, CEO playbook, and a full expense breakdown.</div>
+</header>
+
+<nav class="tabs util">
+  <button class="active" data-t="intro">1. Introduction</button>
+  <button data-t="problems">2. Problems</button>
+  <button data-t="solutions">3. Solutions</button>
+  <button data-t="opportunity">4. Opportunity</button>
+  <button data-t="models">5. Model Options</button>
+  <button data-t="recommend">6. Recommendation</button>
+  <button class="warn" data-t="clarify">7. Clarifications</button>
+  <button data-t="money">8. Monetization</button>
+  <button data-t="tech">9. Tech &amp; API</button>
+  <button data-t="referral">10. Referral Economics</button>
+  <button data-t="perf">11. Performance Switch</button>
+  <button data-t="market">12. Market Entry</button>
+  <button data-t="growth">13. Marketing &amp; Growth</button>
+  <button data-t="drivers">14. Driver Engagement</button>
+  <button data-t="enterprise">15. Enterprise Clients</button>
+  <button data-t="risk">16. Risk Analysis</button>
+  <button data-t="ceo">17. CEO Playbook</button>
+  <button data-t="docs">18. Documents to Update</button>
+  <button data-t="expenses">19. Full Expense Sheet</button>
+</nav>
+
+<section class="panel active" id="intro">
+  <h2 class="title">1. Introduction</h2>
+  <div class="sub">What this company is, structured top-down, and what you're actually trying to build.</div>
+
+  <h3 class="h3">Corporate structure</h3>
+  <ul>
+    <li><b>Rubi Nexus Group</b> — the parent holding company. It owns the intellectual property, the software, the bank accounts, and the brand rights. It exists so that anything you build later beyond freight (fintech tools, other software products) can sit under the same legal umbrella without restructuring everything.</li>
+    <li><b>The Freight Nexus</b> — the operating brand customers actually see and use. Everything freight-related — dispatch, load matching, driver tools — runs under this name.</li>
+  </ul>
+
+  <h3 class="h3">What you want to do</h3>
+  <p class="body">Build a freight technology company that starts as a dispatch/utility service and grows into a two-sided digital platform connecting shippers who need cargo moved with drivers/carriers who move it — while also making money in the background through financial-services partnerships (factoring, fuel cards) rather than relying only on a direct commission. The long-term ambition spans the US, Europe, and Canada, with a specific extension into oil-rig and industrial freight as a differentiated niche.</p>
+
+  <h3 class="h3">Vision, in detail</h3>
+  <p class="body">The Freight Nexus becomes the dispatcher independent drivers actually trust — not because it's the biggest board, but because it's the most honest one: transparent commission (or genuinely free where promised), fast payment, a real person to talk to, and technology that removes busywork (invoicing, rate confirmations, tracking) instead of adding another app to check. On the shipper side, it becomes the reliable alternative to juggling multiple broker relationships for irregular freight — one dispatcher who knows their lanes and responds fast.</p>
+  <p class="body">Five years out, the vision is a recognizable name in 2–3 specific lanes/verticals (not a generic nationwide board), a modest but real driver community, a mobile app used daily by that community, and at least one enterprise or large-fleet account that provides revenue stability the small-shipper side can't offer alone.</p>
+
+  <div class="quote">"The goal isn't to out-build DAT. It's to be the dispatcher a specific group of drivers and shippers trust more than DAT, in a specific place, for a specific kind of freight."</div>
+</section>
+
+<section class="panel" id="problems">
+  <h2 class="title">2. Problems — Competitors and Startup Challenges</h2>
+  <div class="sub">Everything working against this business on day one, named plainly.</div>
+
+  <h3 class="h3">Who the competitors actually are</h3>
+  <table class="rt">
+    <tr><th>Competitor</th><th>What they are</th><th>Why they're a threat</th></tr>
+    <tr><td>DAT Freight &amp; Analytics</td><td>Largest US load board, decades in the market</td><td>Massive existing network of brokers/carriers; deep brand trust</td></tr>
+    <tr><td>Truckstop.com</td><td>Second-largest US load board</td><td>Strong small-carrier base, lower price point than DAT</td></tr>
+    <tr><td>Uber Freight</td><td>Tech-first digital freight brokerage</td><td>Large capital backing, mature instant-book technology</td></tr>
+    <tr><td>Loadsmart</td><td>Tech-enabled freight brokerage</td><td>Automated pricing/booking, enterprise shipper relationships</td></tr>
+    <tr><td>123Loadboard</td><td>Mid-size board with developer/API tools</td><td>More accessible to integrators, still an alternative for drivers</td></tr>
+    <tr><td>Timocom / Transporeon</td><td>Dominant European freight-matching platforms</td><td>Deep EU cross-border penetration, multi-language support</td></tr>
+    <tr><td>Regional/independent dispatchers</td><td>One-person dispatch operations</td><td>Already hold personal driver relationships in specific regions</td></tr>
+  </table>
+  <div class="note">Note: Convoy, a well-known digital freight brokerage, shut down its US brokerage operations in late 2023 — mentioned only as an example of how much capital this space can consume without guaranteed success, not as an active competitor.</div>
+
+  <h3 class="h3">Startup problems — and why each one happens</h3>
+  <ol style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:13.5px; line-height:1.8; color:#333; padding-left:20px;">
+    <li><b>Cold-start problem.</b> Why: a board with no drivers has nothing for shippers to book, and a board with no loads gives drivers no reason to join.</li>
+    <li><b>No brand recognition.</b> Why: incumbents have decades of word-of-mouth trust; a new name starts at zero credibility.</li>
+    <li><b>Limited capital ($3,000–$8,000).</b> Why: covers a lean MVP, not simultaneous multi-country expansion or paid-ad competition with funded incumbents.</li>
+    <li><b>Uncertain API access to existing boards.</b> Why: their load data is their paid product, not a free hand-out to a new competitor (detailed in Clarifications).</li>
+    <li><b>Regulatory uncertainty.</b> Why: dispatch, brokering, and pure software each carry different licensing/liability lines, easily blurred once bidding or payment guarantees are involved.</li>
+    <li><b>Driver payment trust.</b> Why: many drivers have been burned by slow-paying brokers; a new dispatcher starts with the burden of proof.</li>
+    <li><b>Cash flow timing.</b> Why: commissions/referral fees land after delivery and invoicing, while costs are due on a fixed schedule.</li>
+    <li><b>Marketing budget vs incumbents.</b> Why: large players can outspend a bootstrapped startup many times over on paid acquisition.</li>
+    <li><b>Technology build cost/time.</b> Why: a real-time two-sided marketplace with live tracking is easy to underestimate in both cost and calendar time.</li>
+    <li><b>Founder bandwidth.</b> Why: sales, dispatch, tech oversight, and marketing all compete for the same limited hours in the solo phase.</li>
+  </ol>
+</section>
+
+<section class="panel" id="solutions">
+  <h2 class="title">3. Solutions — Matched to Each Problem</h2>
+  <div class="sub">For every problem: the fix, how it's actually done, who does it, and the expected result.</div>
+  <table class="rt">
+    <tr><th>Problem</th><th>Solution</th><th>How / Who / Result</th></tr>
+    <tr><td>Cold-start</td><td>Launch as a free utility tool first (invoice/rate-con generator), not a load board</td><td><b>How:</b> build and ship the invoice generator before marketplace features. <b>Who:</b> founder. <b>Result:</b> drivers install for a reason unrelated to load volume.</td></tr>
+    <tr><td>No brand recognition</td><td>Win trust locally and personally before trying to be known broadly</td><td><b>How:</b> founder personally handles the first 10–20 loads end-to-end. <b>Result:</b> a small group of genuine advocates, worth more early than broad awareness.</td></tr>
+    <tr><td>Limited capital</td><td>Phase everything — MVP first, automation later, funded by revenue as it arrives</td><td><b>How:</b> strict phase gating; nothing built until the prior phase shows signal. <b>Result:</b> budget covers real Phase 1 needs instead of being spread thin.</td></tr>
+    <tr><td>Uncertain API access</td><td>Pursue direct broker relationships and paid API options in parallel; decide once terms are confirmed</td><td><b>How:</b> founder contacts 3–5 regional brokers directly while requesting real DAT/Truckstop terms. <b>Result:</b> a realistic feasibility view before committing engineering time.</td></tr>
+    <tr><td>Regulatory uncertainty</td><td>Decide the legal identity (dispatch vs. software) explicitly and register/insure accordingly</td><td><b>How:</b> one attorney/accountant consultation before launch. <b>Result:</b> contracts sound from day one, not retrofitted after a dispute.</td></tr>
+    <tr><td>Driver payment trust</td><td>Fast, guaranteed payment turnaround, honored without exception</td><td><b>How:</b> commit publicly to a 24–48h window and never miss it. <b>Result:</b> becomes the top repeated positive in driver word-of-mouth.</td></tr>
+    <tr><td>Cash flow timing</td><td>Maintain a standing 1–2 month operating buffer at all times</td><td><b>How:</b> hold back reserve rather than spending the full budget on launch. <b>Result:</b> a slow month doesn't threaten survival.</td></tr>
+    <tr><td>Marketing budget vs incumbents</td><td>Low-cost, high-trust channels instead of paid ads</td><td><b>How:</b> Facebook/owner-operator groups, referrals, direct outreach, founder-led. <b>Result:</b> near-zero acquisition cost, trust compounds via peer referral.</td></tr>
+    <tr><td>Technology cost/time</td><td>Build the lowest-risk, highest-value piece first; gate the marketplace build until justified</td><td><b>How:</b> sequenced developer contracts, Phase 1 quoted separately from Phase 2/3. <b>Result:</b> no spend on later-phase engineering before Phase 1 proves out.</td></tr>
+    <tr><td>Founder bandwidth</td><td>Strict hiring sequence tied to specific bottlenecks</td><td><b>How:</b> first hire triggered by the weekly scorecard, not a calendar date. <b>Result:</b> hiring relieves a real constraint, not a guess.</td></tr>
+  </table>
+</section>
+
+<section class="panel" id="opportunity">
+  <h2 class="title">4. Opportunity</h2>
+  <div class="sub">Why there's still room here despite established competitors.</div>
+  <ul>
+    <li><b>Subscription friction at incumbents:</b> DAT/Truckstop charge recurring fees regardless of whether a small carrier books a load that month.</li>
+    <li><b>Commission squeeze at digital brokers:</b> some tech-first brokers take 15–25% of load value, compressing driver margins meaningfully.</li>
+    <li><b>Fragmented driver workflow:</b> a load board, a separate invoicing tool, and a separate factoring portal — consolidating this is a real time-saver.</li>
+    <li><b>Underserved small-shipper segment:</b> small/mid manufacturers and regional retailers with irregular freight are underserved by big brokers.</li>
+    <li><b>Cheap cloud infrastructure:</b> maps, payments, hosting, and mobile frameworks that once needed a large team are now accessible on a modest budget.</li>
+    <li><b>Founder-market fit:</b> real logistics operations experience (KPI systems, SLA management, multi-station coordination) transfers directly to running dispatch with discipline.</li>
+  </ul>
+  <div class="quote">"The opportunity isn't 'no competition' — it's a specific set of frustrations with existing options that a smaller, more honest operator can genuinely fix."</div>
+</section>
+
+<section class="panel" id="models">
+  <h2 class="title">5. Business Model Options — Detailed, With 5-Year Outlook</h2>
+  <div class="sub">All figures below are illustrative planning ranges, not guarantees.</div>
+  <div class="split2">
+    <div class="card">
+      <div class="badge">Option A</div>
+      <h4>Marketplace / Dispatch Commission</h4>
+      <p class="body"><b>What:</b> shippers post loads directly; drivers accept/bid; you take 5–10% commission per completed load.</p>
+      <p class="body"><b>Benefit:</b> you fully own the load supply and both relationships — no dependency on a competitor's data.</p>
+      <p class="body"><b>Drawback:</b> hardest to cold-start — needs real shippers and drivers simultaneously.</p>
+      <p class="body"><b>Market scope:</b> regional/niche in Year 1–2; broader scope a Year 3+ conversation.</p>
+      <table class="rt">
+        <tr><th>Year</th><th>Illustrative Focus</th></tr>
+        <tr><td>1</td><td>1 narrow US lane; 20–50 loads/month; break-even to modest profit</td></tr>
+        <tr><td>2</td><td>2–3 lanes; 100–200 loads/month; repeat shippers</td></tr>
+        <tr><td>3</td><td>Automation live; 300+ loads/month; first enterprise contract</td></tr>
+        <tr><td>4</td><td>Canada pilot; regional dispatcher hire</td></tr>
+        <tr><td>5</td><td>Europe corridor pilot; recognizable name in 2–3 lanes</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <div class="badge opt">Option B</div>
+      <h4>Zero-Fee Aggregator + Backend Monetization</h4>
+      <p class="body"><b>What:</b> loads pulled from existing boards/partners shown free; money made via factoring referral, fuel kickback, enterprise SaaS.</p>
+      <p class="body"><b>Benefit:</b> much easier cold-start — free utility angle needs no shippers of your own yet.</p>
+      <p class="body"><b>Drawback:</b> depends on unconfirmed third-party access; smaller per-load economics until volume is large.</p>
+      <p class="body"><b>Market scope:</b> can scale wider early, but thinner revenue per user until SaaS layer kicks in.</p>
+      <table class="rt">
+        <tr><th>Year</th><th>Illustrative Focus</th></tr>
+        <tr><td>1</td><td>Free invoice tool live; referral program; first partner conversations</td></tr>
+        <tr><td>2</td><td>1–2 signed factoring/fuel partnerships; early recurring revenue</td></tr>
+        <tr><td>3</td><td>Aggregation live if terms confirmed; first fleet SaaS accounts</td></tr>
+        <tr><td>4</td><td>Meaningful recurring backend revenue; possible expansion</td></tr>
+        <tr><td>5</td><td>Diversified backend revenue; Option A likely blended in</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="recommend">
+  <h2 class="title">6. Recommendation</h2>
+  <div class="sub">Not a choice between A and B — a sequence.</div>
+  <div class="steps">
+    <div class="step"><div class="stepnum">1</div><div class="stepbody"><h4>Start with the Option B utility hook (Months 1–3)</h4><p>The free invoice/rate-con generator needs no load supply or third-party dependency — buildable immediately.</p></div></div>
+    <div class="step"><div class="stepnum">2</div><div class="stepbody"><h4>Build the driver base through the tool</h4><p>Every install is a relationship that exists before you need to hand them a load.</p></div></div>
+    <div class="step"><div class="stepnum">3</div><div class="stepbody"><h4>Confirm factoring/fuel partnerships in parallel (Months 2–6)</h4><p>Real conversations, not assumed terms.</p></div></div>
+    <div class="step"><div class="stepnum">4</div><div class="stepbody"><h4>Layer in Option A once there's a driver base (Months 6–10)</h4><p>Source your own loads directly and apply commission there.</p></div></div>
+    <div class="step"><div class="stepnum">5</div><div class="stepbody"><h4>Run both models permanently, clearly labeled</h4><p>Backend monetization and direct commission become two distinct, complementary lines.</p></div></div>
+  </div>
+  <div class="quote">"This sequencing turns a real disagreement between two models into a roadmap instead of a single irreversible decision."</div>
+</section>
+
+<section class="panel" id="clarify">
+  <h2 class="title">7. Clarifications Needed — Full Detail</h2>
+  <div class="sub">Every assumption that needs a real answer before money or engineering time goes into it.</div>
+
+  <div class="flagcard"><h4>1. DAT / Truckstop API access is not free or automatic</h4>
+  <p class="body">DAT's developer portal signup is free, but production load data access typically requires an active paid subscription (roughly $50–$300/user/month depending on tier), possibly plus a setup fee. Truckstop.com requires upgrading to their "Load Board Pro" tier specifically for API access, with additional costs noted as applying. Neither gives away their core paid product's data for free to a new competitor. <b>Action:</b> contact both providers directly for current terms.</p>
+  <p class="srcnote">Based on current DAT and Truckstop developer/pricing documentation, July 2026.</p></div>
+
+  <div class="flagcard"><h4>2. Custom integration development cost</h4>
+  <p class="body">Industry estimates for a full custom API integration with a platform like DAT run roughly $15,000–$40,000 in developer time, or $5,000–$15,000 for a lighter white-label add-on, plus 10–15% annual maintenance. Well beyond the current $3,000–$8,000 budget — full aggregation is realistically a Year 2+ item.</p>
+  <p class="srcnote">Illustrative industry range — confirm actual quotes before budgeting.</p></div>
+
+  <div class="flagcard"><h4>3. Dispatch service vs. software tool — legal identity undecided</h4>
+  <p class="body">Negotiating rates and representing drivers carries different liability/licensing exposure than a pure display/document tool. This affects insurance, contract wording, and whether broker authority becomes necessary later. <b>Action:</b> a short paid consultation with a transportation-focused attorney before launch.</p></div>
+
+  <div class="flagcard"><h4>4. Factoring referral fees are illustrative, not contracted</h4>
+  <p class="body">The $50–$200 per load figure reflects realistic industry norms, but no agreement exists yet. <b>Action:</b> direct outreach to 2–3 factoring companies for real terms in writing.</p></div>
+
+  <div class="flagcard"><h4>5. Fuel card kickback projections assume full adoption</h4>
+  <p class="body">The $1,500–$3,000/month figure assumes 100 trucks at full integrated-card usage. Treat as an optimistic Year 2+ upside case, not a Year 1 baseline.</p></div>
+
+  <div class="flagcard"><h4>6. "Zero fee" and "commission" can't both be the headline message</h4>
+  <p class="body">Once Option A layers in, the interface needs unambiguous labeling of free-to-view vs. dispatch-fee loads — otherwise the first commission a driver hits after "zero fee" messaging becomes a trust-breaking moment.</p></div>
+
+  <div class="flagcard"><h4>7. The invoice/rate-con generator is the one confirmed low-risk asset</h4>
+  <p class="body">It depends on no one else's data or partnership — buildable and shippable in Phase 1 regardless of how every other question resolves.</p></div>
+
+  <div class="flagcard"><h4>8. Multi-API dependency needs a real fallback plan, not just a principle</h4>
+  <p class="body">"Don't depend on one API" needs at least two named, realistic alternative sources (direct broker relationships, 123Loadboard's more accessible API) confirmed before launch, not just stated as intent.</p></div>
+</section>
+
+<section class="panel" id="money">
+  <h2 class="title">8. Monetization — Deep Dive</h2>
+  <table class="rt">
+    <tr><th>Stream</th><th>Mechanics</th><th>What has to be true first</th><th>Phase</th></tr>
+    <tr><td>Factoring referral fee</td><td>$50–$200/load via in-app "Get Paid Tomorrow"</td><td>Signed factoring partner agreement</td><td>1</td></tr>
+    <tr><td>Fuel card kickback</td><td>Cents-per-gallon recurring via integrated card</td><td>Signed fuel partnership; driver adoption</td><td>1–2</td></tr>
+    <tr><td>Dispatch commission</td><td>5–10% of load value, directly-sourced loads</td><td>Your own shipper relationships</td><td>2+</td></tr>
+    <tr><td>Margin/spread model</td><td>Quote shipper high, pay driver lower</td><td>US broker authority (MC number)</td><td>3+</td></tr>
+    <tr><td>B2B Fleet SaaS</td><td>$30–$50/truck/month, fleets of 20+</td><td>Working multi-driver dashboard; enterprise sales motion</td><td>2–3</td></tr>
+    <tr><td>Carrier subscription</td><td>Monthly fee for priority load access</td><td>Enough volume that priority is worth paying for</td><td>3+</td></tr>
+  </table>
+  <h3 class="h3">How money physically moves</h3>
+  <ol style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:13.5px; line-height:1.8;">
+    <li>Driver completes a load, optionally taps "Get Paid Tomorrow" for factoring.</li>
+    <li>Factoring partner pays the driver fast, then pays Rubinexus its referral fee once the invoice clears.</li>
+    <li>Fuel purchases on the integrated card generate a small per-gallon kickback, paid periodically.</li>
+    <li>On directly-sourced loads, the shipper pays the agreed price; commission is deducted before paying the driver.</li>
+    <li>Fleet SaaS accounts are billed monthly, independent of individual load activity.</li>
+  </ol>
+</section>
+
+<section class="panel" id="tech">
+  <h2 class="title">9. Tech &amp; API Aggregator — Full Detail</h2>
+  <div class="sub">Which providers, free or paid, what it costs, and the honest pros/cons.</div>
+  <table class="rt">
+    <tr><th>Provider</th><th>Access</th><th>Estimated Cost</th><th>Fit for a small startup</th></tr>
+    <tr><td>DAT Freight &amp; Analytics</td><td>Free dev signup; paid production access</td><td>~$50–$300/user/month + possible $500–$1,000 setup</td><td>Difficult now — Year 2+ option once revenue exists</td></tr>
+    <tr><td>Truckstop.com</td><td>Paid — requires "Load Board Pro" tier</td><td>Tier upgrade + "additional costs may apply" (confirm directly)</td><td>Same as DAT — a later-stage option</td></tr>
+    <tr><td>123Loadboard</td><td>Developer program with assigned integration lead</td><td>Historically more accessible; confirm current terms</td><td>Worth the earliest direct conversation</td></tr>
+    <tr><td>Direct regional brokers</td><td>Free, relationship-based, not an API</td><td>No direct cost — founder time only</td><td>Most realistic Phase 1 source</td></tr>
+    <tr><td>Your own sourced shipper loads</td><td>Free (your own data)</td><td>No data cost — sales/outreach time</td><td>Most sustainable long-term source (this is Option A)</td></tr>
+  </table>
+  <h3 class="h3">Estimated one-time integration cost (if a paid API path is chosen)</h3>
+  <table class="rt">
+    <tr><th>Item</th><th>Estimated Range</th></tr>
+    <tr><td>Full custom API integration (one provider)</td><td>$15,000 – $40,000</td></tr>
+    <tr><td>Lighter white-label add-on</td><td>$5,000 – $15,000</td></tr>
+    <tr><td>Ongoing annual maintenance</td><td>10–15% of build cost/year</td></tr>
+    <tr><td>Additional cloud infra for scaling</td><td>+$5,000 (once volume is meaningful)</td></tr>
+  </table>
+  <p class="srcnote">Industry-typical estimates, not a specific developer's quote — confirm real numbers before budgeting.</p>
+  <h3 class="h3">Pros</h3>
+  <ul><li>Gives drivers something to browse without your own shipper base yet.</li><li>Positions the app as feature-rich earlier.</li></ul>
+  <h3 class="h3">Cons</h3>
+  <ul><li>Real cost likely outside current budget until revenue exists.</li><li>You don't own that data — terms/pricing/access can change anytime.</li><li>Doesn't build the direct shipper relationships Option A needs.</li></ul>
+  <div class="note">Recommendation: direct broker relationships and your own sourced loads as the real Phase 1–2 source; revisit paid API aggregation (123Loadboard first) once revenue funds it.</div>
+</section>
+
+<section class="panel" id="referral">
+  <h2 class="title">10. In-App Earning &amp; Referral Economics</h2>
+  <div class="sub">Both scenarios, honestly.</div>
+  <div class="split2">
+    <div class="card"><div class="badge opt">If you DO offer referral incentives</div>
+      <ul>
+        <li>Existing drivers become an unpaid sales force — peer-to-peer, not an ad.</li>
+        <li>Completion-conditioning (one valid load) prevents fake-signup fraud.</li>
+        <li>Cost: a real budgeted expense per successful referral ($25–$100) — plan it into the monthly budget.</li>
+        <li>Risk: without conditioning, this becomes an easily-gamed cost center.</li>
+      </ul>
+    </div>
+    <div class="card"><div class="badge red">If you DON'T offer referral incentives</div>
+      <ul>
+        <li>Lower immediate cost — no bonus payouts.</li>
+        <li>Growth relies entirely on direct outreach and organic word of mouth — typically slower early on.</li>
+        <li>Existing drivers have less active reason to recruit others.</li>
+        <li>Best suited when cash is extremely tight and manual outreach can still cover acquisition.</li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="h3">Recommendation</h3>
+  <p class="body">Launch without a paid referral bonus while the driver base is near zero, then activate the conditioned bonus once there are 15–20 active, satisfied drivers who can genuinely vouch for the platform.</p>
+</section>
+
+<section class="panel" id="perf">
+  <h2 class="title">11. Performance Switch — On-Track vs. Off-Track</h2>
+  <table class="rt">
+    <tr><th>Metric</th><th>On-track target</th><th>If ON track</th><th>If OFF track</th></tr>
+    <tr><td>Driver installs/signups</td><td>Steady monthly growth</td><td>Continue current channels; consider one more region</td><td>Pause underperforming channels; return to direct outreach</td></tr>
+    <tr><td>Invoice tool usage</td><td>Repeat usage by same drivers</td><td>Layer in referral incentive</td><td>Interview users directly — likely a UX fix is needed first</td></tr>
+    <tr><td>Payment turnaround</td><td>&lt; 48 hours, no exceptions</td><td>Use as centerpiece of driver messaging</td><td>Treat any miss as Priority 1 — most damaging metric to break</td></tr>
+    <tr><td>Completed loads/month</td><td>Steady growth toward 50–100/month</td><td>Begin qualifying enterprise conversations</td><td>Pause expansion; fix the core loop in the existing lane first</td></tr>
+    <tr><td>Cash buffer</td><td>1–2 months held in reserve always</td><td>Consider the next hire/investment</td><td>Freeze all non-essential spend immediately</td></tr>
+    <tr><td>Factoring/fuel conversations</td><td>1 signed agreement by Month 6</td><td>Move to scaling that revenue stream</td><td>Reassess whether Option B timing needs to shift a phase</td></tr>
+  </table>
+  <div class="quote">"The switch only works if the metrics are actually reviewed on schedule — a KPI nobody looks at isn't a performance switch, it's decoration."</div>
+</section>
+
+<section class="panel" id="market">
+  <h2 class="title">12. Market Entry — Country by Country</h2>
+  <h3 class="h3">United States</h3>
+  <ul>
+    <li>LLC formation: ~$50–$500 depending on state, plus annual report fees.</li>
+    <li>Pure dispatch generally doesn't require federal broker license/bond — confirm specifics with a transportation attorney.</li>
+    <li>If broker authority is later needed: FMCSA application (~$300), a $75,000 BMC-84 bond (typically financed, not paid upfront in full), and a BOC-3 process agent per state.</li>
+    <li>Estimated Phase 1 US legal/setup cost (dispatch-only): ~$500–$1,500.</li>
+  </ul>
+  <h3 class="h3">Europe</h3>
+  <ul>
+    <li>Freight forwarding/dispatch regulation varies by country; some require professional competence proof.</li>
+    <li>VAT registration typically required once invoicing EU clients commercially.</li>
+    <li>A local partner or registered entity is close to essential for language and regulatory access.</li>
+    <li>Estimated cost: highly variable — budget for local legal consultation before committing to a country.</li>
+  </ul>
+  <h3 class="h3">Canada</h3>
+  <ul>
+    <li>Carriers need a valid Safety Fitness Certificate and NSC number.</li>
+    <li>Cross-border US–Canada freight needs customs documentation (e.g. PARS process).</li>
+    <li>Quebec activity may require French-language documentation.</li>
+    <li>Estimated cost: lower than full EU entry — mainly compliance/documentation setup.</li>
+  </ul>
+  <div class="note">All figures are general planning estimates — confirm current fees/requirements with a licensed attorney or accountant in each jurisdiction before committing capital.</div>
+</section>
+
+<section class="panel" id="growth">
+  <h2 class="title">13. Marketing &amp; Growth — Full Detail, With Costs</h2>
+  <table class="rt">
+    <tr><th>Channel</th><th>Audience</th><th>Estimated Monthly Cost</th><th>Who runs it</th></tr>
+    <tr><td>Facebook / owner-operator groups</td><td>Drivers</td><td>$0 (time only)</td><td>Founder, personally, early on</td></tr>
+    <tr><td>Referral bonus program</td><td>Drivers</td><td>$200–$500/month once active</td><td>Founder approves, completion-conditioned</td></tr>
+    <tr><td>Short-form video content</td><td>Drivers</td><td>$0–$100</td><td>Founder films real, simple demos</td></tr>
+    <tr><td>Direct LinkedIn/email outreach</td><td>Shippers</td><td>$0–$50 (Sales Navigator optional)</td><td>Founder, personally</td></tr>
+    <tr><td>Case studies</td><td>Shippers</td><td>$0 (time only)</td><td>Founder documents first 10–20 loads</td></tr>
+    <tr><td>SEO/website content</td><td>Both</td><td>$0 self-written; $200–$500 if outsourced</td><td>Founder or freelance writer</td></tr>
+    <tr><td>Regional trade events</td><td>Shippers/credibility</td><td>$300–$1,500/event (Year 2+)</td><td>Founder, once case studies exist</td></tr>
+    <tr><td>Paid ads (Google/Meta)</td><td>Both</td><td>Deliberately $0 in Phase 1</td><td>Not recommended before ops can fulfill demand</td></tr>
+  </table>
+  <h3 class="h3">What the CEO actually does week to week</h3>
+  <ul>
+    <li>Dedicated daily time in driver community spaces — replying and helping, not just posting.</li>
+    <li>One direct shipper outreach batch per week, personalized, not mass blasts.</li>
+    <li>Weekly review of funnel numbers against Performance Switch targets, adjusting channel mix based on what converts.</li>
+    <li>Turns real customer interactions into content/case studies — growth material comes from operations, not a separate budget line.</li>
+  </ul>
+</section>
+
+<section class="panel" id="drivers">
+  <h2 class="title">14. Driver Engagement — Extended Detail</h2>
+  <div class="sub">The supply side of the entire business, covered in significant depth.</div>
+  <h3 class="h3">Acquisition, step by step</h3>
+  <div class="steps">
+    <div class="step"><div class="stepnum">1</div><div class="stepbody"><h4>Identify the first 20 target drivers personally</h4><p>A specific, named list in the chosen starting lane, contacted individually — not a mass campaign.</p></div></div>
+    <div class="step"><div class="stepnum">2</div><div class="stepbody"><h4>Lead with the free tool, not a pitch</h4><p>"Try this free invoice generator" is far lower-friction than "join my new dispatch platform."</p></div></div>
+    <div class="step"><div class="stepnum">3</div><div class="stepbody"><h4>Convert tool users into platform users over time</h4><p>Introduce load access as a natural next step once trust exists, not a hard pivot.</p></div></div>
+    <div class="step"><div class="stepnum">4</div><div class="stepbody"><h4>Activate referrals once there's a satisfied base</h4><p>Turns the first cohort into a recruiting engine for the second.</p></div></div>
+  </div>
+  <h3 class="h3">Onboarding — what driver login actually needs</h3>
+  <ul>
+    <li>Sign-up with license, insurance, equipment details, reviewed/approved before live-load access — protects trust and reduces fraud/no-show risk.</li>
+    <li>Clear upfront explanation of payment, commission (if any), and the factoring option — no fine print discovered later.</li>
+    <li>First load always handled personally by the founder — high-touch matters more than any feature at this stage.</li>
+  </ul>
+  <h3 class="h3">Engagement &amp; retention mechanics</h3>
+  <ul>
+    <li><b>Fast payment guarantee:</b> 24–48 hour payout window, treated as non-negotiable.</li>
+    <li><b>Tiered recognition:</b> Bronze/Silver/Gold based on completed loads, giving top drivers first access to high-value loads.</li>
+    <li><b>Direct relationship:</b> always a real person to reach, not just an app — deliberate differentiation, not a Phase 1 limitation.</li>
+    <li><b>Community space:</b> a WhatsApp/Telegram group for active drivers — belonging, informal support, organic referral conversation.</li>
+    <li><b>Rate transparency:</b> showing exactly how a rate was calculated builds more trust than a black-box number.</li>
+    <li><b>Non-monetary recognition:</b> public shout-outs for top-performing drivers in the community group, at no cost.</li>
+    <li><b>Consistent load flow:</b> nothing retains a driver like reliably having a next load in their lane — loops directly back into shipper acquisition.</li>
+  </ul>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="n">&lt; 48h</div><div class="l">Payment turnaround target</div></div>
+    <div class="kpi"><div class="n">30–50</div><div class="l">Active drivers, Year 1 target</div></div>
+    <div class="kpi"><div class="n">$25–100</div><div class="l">Conditioned referral bonus</div></div>
+    <div class="kpi"><div class="n">1st load</div><div class="l">Always founder-handled early on</div></div>
+  </div>
+</section>
+
+<section class="panel" id="enterprise">
+  <h2 class="title">15. Enterprise &amp; Major Client Acquisition — Deep List</h2>
+  <table class="rt">
+    <tr><th>Segment</th><th>Examples (type, not endorsement)</th><th>Relationship type</th><th>Who pays whom</th></tr>
+    <tr><td>Large parcel/logistics companies</td><td>DHL-scale carriers/3PLs needing overflow capacity</td><td>Vetted secondary/backup capacity provider</td><td>They pay for capacity; you earn your normal commission</td></tr>
+    <tr><td>Regional 3PLs</td><td>Mid-size third-party logistics firms</td><td>Overflow/backup vendor, easier to win first</td><td>They pay for freight moved; you take commission</td></tr>
+    <tr><td>E-commerce/distribution companies</td><td>Regional online retailers, irregular freight</td><td>Direct shipper client — likely first real enterprise win</td><td>They pay you directly for dispatch services</td></tr>
+    <tr><td>Large fleet operators (20+ trucks)</td><td>Independent fleets running many trucks</td><td>B2B SaaS customer for dashboard/settlement tools</td><td>They pay a monthly per-truck SaaS fee — a software sale</td></tr>
+    <tr><td>Factoring companies</td><td>Firms like RTS Financial, OTR Capital (illustrative)</td><td>Referral partnership</td><td>They pay you a referral fee per load financed — you don't pay them</td></tr>
+    <tr><td>Fuel card providers</td><td>Firms like Shell Fleet, EFS-style (illustrative)</td><td>Referral/kickback partnership</td><td>They pay you a per-gallon kickback — you don't pay them</td></tr>
+    <tr><td>Load data/API providers</td><td>DAT, Truckstop, 123Loadboard</td><td>Vendor relationship — you're the paying customer</td><td><b>You pay them</b> a subscription/API fee — the one reversed direction</td></tr>
+  </table>
+  <h3 class="h3">Realistic sequencing to win any of the above</h3>
+  <div class="steps">
+    <div class="step"><div class="stepnum">1</div><div class="stepbody"><h4>Build a track record with small/mid shippers first</h4><p>10–20 completed, documented loads become the proof point for every future conversation.</p></div></div>
+    <div class="step"><div class="stepnum">2</div><div class="stepbody"><h4>Position as overflow/backup capacity, not primary vendor</h4><p>Large shippers test new dispatchers on surge loads far more readily than on primary volume.</p></div></div>
+    <div class="step"><div class="stepnum">3</div><div class="stepbody"><h4>Meet baseline vendor requirements before pitching</h4><p>Insurance, safety documentation, real-time visibility — often non-negotiable for enterprise approval.</p></div></div>
+    <div class="step"><div class="stepnum">4</div><div class="stepbody"><h4>Apply to formal vendor programs once ready</h4><p>Apply once the track record and compliance documentation genuinely exist.</p></div></div>
+  </div>
+</section>
+
+<section class="panel" id="risk">
+  <h2 class="title">16. Risk Analysis — Extended Detail</h2>
+  <table class="rt">
+    <tr><th>Risk</th><th>Why it could happen</th><th>Fix</th></tr>
+    <tr><td>API/data blockade</td><td>A provider changes terms or denies access — no obligation to a small competitor</td><td>Never architect the core product around one data source</td></tr>
+    <tr><td>Cold-start / no early users</td><td>Nothing on the board gives either side a reason to open the app twice</td><td>Utility-first launch (invoice generator)</td></tr>
+    <tr><td>Brand damage from cheap ads/UI</td><td>Clutter or spammy ads undermine the trust the brand depends on</td><td>Zero banner ads; clean, disciplined interface</td></tr>
+    <tr><td>Concentration risk</td><td>One shipper/partner too large a share of revenue</td><td>Cap any single account at ~30–40% of volume</td></tr>
+    <tr><td>Cash flow timing mismatch</td><td>Payouts lag delivery while costs are fixed-schedule</td><td>Standing 1–2 month operating buffer, untouched by growth spending</td></tr>
+    <tr><td>Messaging confusion (zero-fee vs commission)</td><td>Drivers feel misled hitting a fee after "free" messaging</td><td>Explicit, consistent UI labeling</td></tr>
+    <tr><td>Driver payment delay (even once)</td><td>Spreads fast in a tight-knit driver community, undoing months of trust</td><td>Treat the payment window as non-negotiable, buffered specifically to never miss it</td></tr>
+    <tr><td>Regulatory misclassification</td><td>Acting as a de facto broker without broker authority, unintentionally</td><td>Get the dispatch-vs-broker question answered explicitly before launch</td></tr>
+    <tr><td>Founder burnout/bandwidth collapse</td><td>Dispatch, sales, tech, marketing all on one person</td><td>Hire dispatch support the moment the scorecard shows the founder is the bottleneck</td></tr>
+    <tr><td>Fraudulent referral signups</td><td>Fake accounts created purely to claim bonuses</td><td>Condition every payout on one completed valid load</td></tr>
+    <tr><td>Document/data security lapse</td><td>License/insurance uploads exposed to unauthorized parties</td><td>Private storage, role-based access (per website requirements doc)</td></tr>
+    <tr><td>Currency/payment friction (EU/Canada)</td><td>Multi-currency handling introduces reconciliation complexity</td><td>Keep early multi-country activity manual until volume justifies automation</td></tr>
+    <tr><td>Over-expansion before the model is proven</td><td>Running three markets and five features at once dilutes focus/budget</td><td>Strict phase gating — nothing new starts until the current phase shows real signal</td></tr>
+    <tr><td>Competitor price response</td><td>An incumbent discounts or improves its small-carrier offering in reaction</td><td>Compete on trust, responsiveness, payment speed — harder for a large incumbent to match structurally</td></tr>
+    <tr><td>Key-person dependency</td><td>Nearly everything routes through the founder in Phase 1</td><td>Document processes early so the first hire can absorb responsibility quickly</td></tr>
+  </table>
+</section>
+
+<section class="panel" id="ceo">
+  <h2 class="title">17. CEO Playbook &amp; Roadmap — Extended</h2>
+  <h3 class="h3">Solo-founder phase (Months 1–6)</h3>
+  <ul>
+    <li>Personally handles every driver/shipper relationship, every load, every piece of content or outreach.</li>
+    <li>Weekly scorecard without exception: installs, invoices generated, loads completed, on-time %, cash position, partner conversations.</li>
+    <li>All spend/hiring/feature decisions run through the Performance Switch framework, not gut feeling.</li>
+  </ul>
+  <h3 class="h3">First hires, with trigger conditions</h3>
+  <table class="rt">
+    <tr><th>Order</th><th>Role</th><th>Trigger condition</th></tr>
+    <tr><td>1</td><td>Part-time dispatch/ops support</td><td>Founder can't personally track all active loads without errors</td></tr>
+    <tr><td>2</td><td>Business development / sales</td><td>Founder's time bottlenecks new shipper/enterprise conversations</td></tr>
+    <tr><td>3</td><td>Developer/product owner (or retainer)</td><td>Platform needs continuous feature work beyond initial build</td></tr>
+    <tr><td>4</td><td>Regional lead (Europe/Canada)</td><td>A pilot corridor is proven and needs dedicated local attention</td></tr>
+  </table>
+  <h3 class="h3">Operating cadence</h3>
+  <ul>
+    <li><b>Daily:</b> open loads, driver assignments, flagged incidents/delayed payments.</li>
+    <li><b>Weekly:</b> full scorecard review, one deliberate growth action, check every metric against its target.</li>
+    <li><b>Monthly:</b> financial review by revenue stream, operating cost, cash buffer, churn.</li>
+    <li><b>Quarterly:</b> strategic review — next hire, lane, market, or revenue stream?</li>
+  </ul>
+  <h3 class="h3">Full roadmap</h3>
+  <table class="rt">
+    <tr><th>Phase</th><th>Timing</th><th>Focus</th></tr>
+    <tr><td>0 — Setup</td><td>Weeks 1–3</td><td>Registration, legal identity decision, branding, initial driver outreach</td></tr>
+    <tr><td>1 — Utility Launch</td><td>Weeks 4–10</td><td>Free invoice/rate-con generator live, referral groundwork, partner outreach</td></tr>
+    <tr><td>2 — Driver Base Building</td><td>Months 3–6</td><td>Growing installs; first partnerships signed; direct broker relationships</td></tr>
+    <tr><td>3 — Direct Load Layer (A)</td><td>Months 6–10</td><td>Own shipper sourcing begins; commission model goes live</td></tr>
+    <tr><td>4 — Platform Automation</td><td>Months 10–14</td><td>Live status board, bidding, control-tower dashboard, live map tracking</td></tr>
+    <tr><td>5 — Enterprise &amp; Fleet SaaS</td><td>Year 2</td><td>B2B fleet accounts; first large-shipper overflow contract</td></tr>
+    <tr><td>6 — Geographic Expansion</td><td>Year 2–3</td><td>Canada pilot, then one Europe corridor with a local partner</td></tr>
+  </table>
+  <div class="quote">"The free tool earns the driver base. The driver base earns the right to layer in loads, commission, and enterprise accounts."</div>
+</section>
+
+<section class="panel" id="docs">
+  <h2 class="title">18. Documents That Need Updating</h2>
+  <div class="sub">The website and app requirement documents already prepared were scoped around Option A alone — they need revision for this merged model.</div>
+  <ul>
+    <li><b>Website Requirements:</b> add the free invoice/rate-con generator as a Phase 1 feature (currently the doc assumes the load board itself is Phase 1 core), plus explicit UI labeling for free-to-view vs. dispatch-fee loads.</li>
+    <li><b>App Requirements:</b> add the invoice-generator tool as a driver feature, and specify the referral mechanics (unique code, completion-conditioned payout) as an actual feature.</li>
+    <li>Both should reference specific factoring/fuel-card integration points once those partnerships are confirmed — currently they only describe generic "payment groundwork."</li>
+    <li>Recommendation: revise both documents once the partner conversations (Tabs 7–8) produce real terms, so a developer quotes against confirmed requirements.</li>
+  </ul>
+  <div class="note">Flagged as an action item, not yet done — the existing PDFs below still reflect the marketplace-only model and should be treated as a first draft pending this update.</div>
+  <div class="pdfrow">
+    <a class="pdflink" href="Website_Requirements_For_Developer.pdf" target="_blank"><span class="ic">PDF</span> Current Website Requirements (PDF)</a>
+    <a class="pdflink" href="App_Requirements_For_Developer.pdf" target="_blank"><span class="ic">PDF</span> Current App Requirements (PDF)</a>
+  </div>
+</section>
+
+<section class="panel" id="expenses">
+  <h2 class="title">19. Full Expense Sheet &amp; Payback Sources</h2>
+  <table class="rt">
+    <tr><th>Item</th><th>Estimated Cost</th><th>Phase</th></tr>
+    <tr><td>Business registration</td><td>$500 – $1,800</td><td>0</td></tr>
+    <tr><td>Legal consultation (dispatch vs. broker identity)</td><td>$300 – $800</td><td>0</td></tr>
+    <tr><td>Branding &amp; design (already partly done)</td><td>$150 – $400</td><td>0</td></tr>
+    <tr><td>Domain, hosting, business email (1 year)</td><td>$150 – $350</td><td>0</td></tr>
+    <tr><td>Website MVP (invoice tool + basic load view)</td><td>$600 – $1,800</td><td>1</td></tr>
+    <tr><td>Referral program budget (once activated)</td><td>$200 – $500/month</td><td>2</td></tr>
+    <tr><td>Marketing (organic-first)</td><td>$0 – $150/month</td><td>1–2</td></tr>
+    <tr><td>Factoring/fuel partner outreach</td><td>~$0 direct cost (time only)</td><td>1</td></tr>
+    <tr><td>Working capital / operating buffer</td><td>$500 – $1,000</td><td>0–1</td></tr>
+    <tr><td>Contingency (10%)</td><td>$300 – $700</td><td>0</td></tr>
+    <tr><td>Platform automation build (deferred)</td><td>Quoted separately once Phase 1 proves out</td><td>3</td></tr>
+    <tr><td>Mobile app build (deferred)</td><td>Quoted separately once driver base justifies it</td><td>4</td></tr>
+    <tr><td>Paid API access (if pursued)</td><td>$50–$300/month + $5,000–$40,000 integration</td><td>3+</td></tr>
+    <tr><td>US broker authority (only if margin model pursued)</td><td>~$300 filing + $75,000 bond (typically financed)</td><td>3+</td></tr>
+    <tr><td>Europe pilot legal/local setup</td><td>Variable — a few hundred to low thousands of euros</td><td>6+</td></tr>
+    <tr><td>Trade event attendance</td><td>$300 – $1,500/event</td><td>5+</td></tr>
+  </table>
+  <div class="expense-total">Realistic Phase 0–1 launch total: <span class="n">~$2,700 – $6,000</span> — comfortably inside the existing $3,000–$8,000 target.</div>
+  <h3 class="h3">Where paid collaboration/revenue realistically starts flowing back in</h3>
+  <ul>
+    <li><b>Factoring referral fees</b> — fastest realistic backend revenue once a partner is signed, no load volume of your own required.</li>
+    <li><b>Fuel card kickbacks</b> — recurring, scales with active drivers, but ramps slowly.</li>
+    <li><b>Dispatch commission</b> on your own sourced loads — largest per-transaction revenue, needs real shipper relationships.</li>
+    <li><b>B2B Fleet SaaS</b> — most stable recurring revenue once available, a Year 2+ conversation.</li>
+    <li><b>Enterprise overflow contracts</b> — potentially the largest single jump, reachable only after the Tab 15 track record and compliance requirements are met.</li>
+  </ul>
+  <div class="quote">"Every dollar in this sheet is either a one-time setup cost or a cost tied to a specific phase — nothing here should be spent before its phase starts."</div>
+</section>
+
+<script>
+  document.querySelectorAll('nav.tabs button').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('section.panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.t).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+</script>
+<!-- PASSWORD CHECK SCRIPT -->
+<script>
+  // APNA PASSWORD YAHAN SET KAREIN:
+  const DOCUMENT_PASSWORD = "nexus1821"; 
+
+  function checkPass() {
+    let inputVal = document.getElementById('pass-input').value;
+    if (inputVal === DOCUMENT_PASSWORD) {
+      document.getElementById('auth-overlay').style.display = 'none';
+    } else {
+      document.getElementById('pass-err').style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html>
